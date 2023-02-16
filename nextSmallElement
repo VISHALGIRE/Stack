@@ -1,0 +1,46 @@
+APPROACH 1 : T.C. = O(N^2)
+
+import java.util.*;
+
+// import javax.xml.validation.Schema;
+public class nextSmall {
+    public static void main(String[] args) {
+        System.out.println("Enter size of array :");
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        ArrayList<Integer> li = new ArrayList<>();
+        int[] arr = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        // printing array
+        for (int i = 0; i < arr.length - 1; i++) {
+            System.out.println(arr[i]);
+        }
+        // printing each number for each element :
+        for (int i = 0; i < arr.length - 1; i++) {
+            int min = arr[i];
+            System.out.print("for " + arr[i] + ":");
+            for (int j = i + 1; j < arr.length - 1; j++) {
+                System.out.println(arr[j] + " ");
+                if (min > arr[j]) {
+                    min = arr[j];
+                } else {
+                    min = -1;
+                }
+            }
+            li.add(min);
+            System.out.println();
+
+        }
+        // finding min element for indexes:
+        for (int i : li) {
+            System.out.println(i);
+        }
+
+    }
+}
+
+APPROACH 2: USING STACK 
+T.C. - O(N)
