@@ -1,0 +1,54 @@
+import java.util.*;
+
+public class redundan_parenthesis {
+
+    public static boolean isRedundant(String s) {
+
+        // char[] ch = new char[s.length()];
+        Stack<Character> st = new Stack<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            // char ch = s[i];
+
+            if (s.charAt(i) == '(' || s.charAt(i) == '+' || s.charAt(i) == '-' || s.charAt(i) == '*'
+                    || s.charAt(i) == '/') {
+
+                st.push(s.charAt(i));
+            } else {
+// we checking for any operator between opening and closing braces , if get opening brace we push into stack and we get any closing brace we travese the stack 
+//till we get open brace while travesing the atsck we get the any operator then it is non-redundent brackets
+                if (s.charAt(i) == ')') {
+                    boolean is_Redundant = true;
+                    while (st.peek() != '(') {
+                        char top = st.peek();
+                        if (top == '+' || top == '-' || top == '*' || top == '/') {
+
+                            is_Redundant = false;
+                        }
+                        st.pop();
+                    }
+                    if (is_Redundant == true) {
+                        return true;
+                    }
+                    st.pop();
+
+                }
+            }
+        }
+        return false;
+
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter expression :");
+        String str = sc.nextLine();
+
+        if (isRedundant(str)) {
+            System.out.println("true");
+        } else {
+            System.out.println("False");
+        }
+    }
+
+}
