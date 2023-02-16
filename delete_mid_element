@@ -1,0 +1,46 @@
+
+/*
+ * APPROCAH :
+ to delete mid-element we traverse the stack till count == size()/2 ,and 
+ delete element present at size()/2 .
+ To get at that element withoiut deleting ither elements we store the elements in variable
+ while reaching base conditon we push these sotred values in stack.  
+  
+  
+ */
+import java.util.*;
+
+class del_mid {
+    public static void delmid(Stack<Integer> s, int count, int n) {
+
+        if (count == n) {
+            s.pop();
+            return;
+        }
+        int num = s.peek();
+        s.pop();
+        delmid(s, count + 1, n);
+        s.push(num);
+
+        System.out.println(s);
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        Stack<Integer> st = new Stack<>();
+
+        System.out.println("Enter numbers :");
+        for (int i = 0; i < 5; i++) {
+            st.push(sc.nextInt());
+
+        }
+        sc.close();
+        System.out.println(st);
+        int n = st.size() / 2;
+        int count = 0;
+
+        // System.out.print();
+        delmid(st, count, n);
+    }
+}
