@@ -1,0 +1,35 @@
+import java.util.*;
+// import java.util.Scanner;
+import java.util.Stack;
+
+public class nextSmall_2 {
+    public static void main(String[] args) {
+        // Scanner sc = new Scanner(System.in);
+        Stack<Integer> st = new Stack<>();
+        ArrayList<Integer> ans = new ArrayList<>();
+        // Stack<Integer>st2 = new Stack<>();
+        int arr[] = { 1, 8, 1, 3, 5, 1 };
+        // int arr[] ={2,1,4,3};
+
+        st.push(-1);
+
+        for (int i = arr.length - 1; i >= 0; i--) {
+
+            int curr = arr[i];
+
+            while (st.peek() >= curr) {
+                st.pop();
+            }
+            // st.peek() = curr;
+            // if st.peek() element is smaller then current add it to ans and push curr to
+            // stack...
+            // if st.peek() element is greater then curr pop it until get smaller number ,
+            // when we smaller number add it to ans and push number in stack
+            ans.add(st.peek());
+            System.out.print(st.peek() + " ");
+            st.push(curr);
+
+        }
+        System.out.println(ans);
+    }
+}
