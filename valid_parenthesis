@@ -1,0 +1,34 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class valid_parenthesis {
+
+    public static void main(String[] args) {
+
+        Stack<Character> st = new Stack<>();
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+
+        // if(str.length()%3==0){
+        // System.out.println("Not Valid!!!");
+
+        // }
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '(' || str.charAt(i) == '{' || str.charAt(i) == '[') {
+                st.push(str.charAt(i));
+            }
+            if (str.charAt(i) == ')' && st.peek() == '(' || str.charAt(i) == '}' && st.peek() == '{'
+                    || str.charAt(i) == '[' && st.peek() == ']') {
+                st.pop();
+            }
+        }
+        if (st.isEmpty()) {
+            System.out.println("Is valid");
+
+        } else {
+            System.out.println("Not valid");
+        }
+
+    }
+
+}
